@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height: 150px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="设置边框" id="btnOne">
+    <input type="button" value="设置文本" id="btnTwo">
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    // 原生js入口函数
+    window.onload = function () {
+        var btnOne = document.getElementById('btnOne');
+        var btnTwo = document.getElementById('btnTwo');
+        var divs = document.getElementsByTagName('div');
+
+        btnOne.onclick = function () {
+            for (var i = 0; i < divs.length; i++){
+                divs[i].style.border = '1px solid red';
+            }
+        };
+
+        btnTwo.onclick = function () {
+            for (var i = 0; i < divs.length; i++){
+                divs[i].textContent = 'Hello World!';
+
+            }
+        }
+    }
+</script>
+</html>

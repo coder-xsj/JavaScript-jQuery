@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="static/js/hello-world.js"></script>
+    <script>
+        function names() {
+            var nameList = ['xsj', 'zmx', 'app'];
+            nameList.forEach(function (element, index, array) {
+                console.log(element + index);
+            })
+        };
+        function set() {
+            var s = new Set(['A', 'B', 'C']);
+            s.forEach(function (element, sameElement, set) {
+                console.log(element);
+            });
+        }
+        function map() {
+            var m = new Map([[1, 'x'], [2, 'y'], [3, 'z']]);
+            m.forEach(function (value, key, map) {
+                console.log(value);
+            });
+        }
+        function filter() {
+            var arr = [1, 2, 4, 5, 6, 9, 10, 15];
+            var r = arr.filter(function (x) {
+                return x % 2 !== 0;
+            });
+            r; // [1, 5, 9, 15]
+            for (let i = 0; i <= r.length; i++ ){
+                console.log(r[i]);
+            }
+        }
+        function filterRepeat() {
+            var
+                r,
+                arr = ['apple', 'strawberry', 'banana', 'pear', 'apple', 'orange', 'orange', 'strawberry'];
+            r = arr.filter(function (element, index, self) {
+                return arr.indexOf(element) === index;
+            })
+            for (let i = 0; i <= r.length; i++ ){
+                console.log(r[i]);
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <p onclick="names()">namelist</p>
+    <p onclick="set()">set</p>
+    <p onclick="map()">map</p>
+    <p onclick="filter()">filter</p>
+    <p onclick="filterRepeat()">去重</p>
+</body>
+</html>
