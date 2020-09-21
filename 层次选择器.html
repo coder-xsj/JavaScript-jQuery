@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层次选择器---后代和子选择器</title>
+</head>
+<body>
+    <p></p>
+    <div id="father">
+        <div>
+            <span>span1</span>
+            <span>span2</span>
+            <span>span3</span>
+        </div>
+        <div>
+            <b></b>
+            <div>div1</div>
+            <div>div2</div>
+            <div>div3</div>
+            <p></p>
+        </div>
+        <div></div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <span>sss1</span>
+    </div>
+</body>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+    //需求1：获取id为father这个元素的所有子div.
+        console.log($('#father>div'));
+    //需求2：获取id为father这个元素的所有后代div以及所有子span
+        console.log($('#father div, #father span'))
+    //需求3：获取id为father这个元素的所有子div以及所有子p
+        console.log($('#father>div, #father>p'))
+    })
+</script>
+</html>
