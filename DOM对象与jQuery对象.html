@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM对象与jQuery对象</title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="divOne"></div>
+    <div id="divTwo"></div>
+    <div id="divThree"></div>
+</body>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    //1. Dom对象
+    var div1 = document.getElementById('divOne');
+    div1.style.backgroundColor = 'red';
+    //2. jQuery对象
+    var div2 = $('#divTwo');
+    div2.css('backgroundColor', 'blue');
+    //3.不可互相调用对象方法
+    //4.dom对象转化成jQuery对象
+    div1 = $(div1);
+    console.log(div1);
+    //5.jQuery对象转化成dom对象
+    //jQuery对象是一个伪数组.jQuery对象其实就是dom对象的一个包装集。
+    //5.1直接通过下标来取
+    var divs = $('div');
+    var div3 = divs[2];
+    console.log(div1);  //<div id="divThree"></div>
+
+    //5.2通过jQuery的get(index)方法
+    var div2 = divs.get(1);
+    console.log(div2);
+</script>
+</html>
