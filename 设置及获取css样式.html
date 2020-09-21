@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置及获取css样式</title>
+    <style>
+        #div1{
+            height: 200px;
+            background-color: pink;
+            border: 2px solid red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="获取文本" id="getBtn">
+    <input type="button" value="设置文本" id="setBtn">
+    <div id="div1" style="width: 200px"></div>
+    <div id="div2" style="width: 300px"></div>
+    <div id="div3" style="width: 400px"></div>
+    <div id="content"></div>
+</body>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    // 需求设置
+    // css() 获取和设置css样式
+    // 获取div1的属性
+    $(function () {
+        $('#getBtn').click(function () {
+            var $attribute =  $('#div1').css('border') + '\n'+ $('#div1').css('width') + '\n' +$('#div1').css('background-color');
+            $('#content').text($attribute);
+            // 获取所有div标签的属性
+            console.log($('div').css('width'));
+            // 根据结果只会返回第一个div元素的属性
+        })
+    });
+        // 设置样式 css('属性', '值')
+        $('#setBtn').click(function () {
+            // 设置单样式，并且为行内样式
+            $('#div1').css('background-color', 'blue');
+            // 属性 驼峰和下划线都可以
+            $('#div1').css('backgroundColor', 'blue');
+            $('#div1').css('border', '5px solid yellow');
+
+            //设置多样式
+            $('div').css({
+                width: '300px',
+                height: '300px',
+                backgroundColor: 'gray',
+                border: '5px solid pink',
+                marginTop: '10px',
+            })
+            // 隐式迭代，给每个div都设置了css样式
+        })
+</script>
+</html>
