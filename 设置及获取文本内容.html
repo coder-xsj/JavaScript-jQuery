@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置及获取文本内容</title>
+</head>
+<body>
+    <input type="button" value="获取文本" id="getBtn">
+    <input type="button" value="设置文本" id="setBtn">
+    <div id="div1">我是一个div1标签
+        <p>我是一个p1标签 <span>span1</span> </p>
+    </div>
+    <div id="div2">我是一个div2标签
+        <p>我是一个p2标签 <span>span2</span> </p>
+    </div>
+</body>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    // 需求：点击按钮分别获取和设置其它元素的文本 --- text()
+    $(function () {
+
+        //获取div文本
+        $('#getBtn').click(function () {
+            var divContent = $('#div1').text();
+            console.log(divContent);
+            // 根据结果得知它是会获取所有后代元素的文本
+
+            var divsContent = $('div').text();
+            console.log(divsContent);
+            // 根据结果得知它是会获取所有dom元素的后代元素的文本
+        });
+        //设置div的文本
+        $('#setBtn').click(function () {
+            $('#div1').text('设置文本:Hello World!');
+            // 根据结果发现它是会替换原来的结构的
+            $('#div2').text('设置文本:Hello World!<span>hahaha</span>');
+            // 根据结果是不会解析html标签的
+            $('div').text('设置多个dom元素的jQuery对象的文本'); //隐式迭代
+        })
+    })
+</script>
+</html>
