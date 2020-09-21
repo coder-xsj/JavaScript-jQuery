@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Switch-lights</title>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+            margin: 200px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button id="On">Light-On</button>
+    <button id="Off">Light-Off</button>
+    <img src="./static/images/kangJia~.png" alt="">
+</body>
+<!--需求：按钮分别给body设置背景色-->
+<script src="node_modules/jquery/dist/jquery.js"></script>
+
+<!--<script>-->
+<!--    // 纯jQuery方法-->
+<!--    $('#On').click(function () {-->
+<!--        $('body').css('backgroundColor', 'gray');-->
+<!--    })-->
+<!--    $('#Off').click(function () {-->
+<!--        $('body').css('backgroundColor', 'rgb(0, 0, 0)');-->
+
+<!--    })-->
+<!--</script>-->
+<script>
+    // 学习前面知识的方法
+    var btns = document.getElementsByTagName('button');
+    // console.log(btns);
+    // 将dom元素通过$来转化为jQuery对象
+    // On
+    $(btns[0]).click(function () {
+        $('body').css('backgroundColor', 'gray');
+    })
+    // Off
+    btns[1].onclick = function () {
+        $('body')[0].style.backgroundColor = 'black';
+    }
+</script>
+</html>
