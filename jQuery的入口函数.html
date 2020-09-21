@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    // 入口函数写法
+    // 1.
+    $(document).ready(function () {
+        
+    })
+    // 2. 
+    $(function () {
+
+    });
+    //jQuery文件结构，是一个自执行函数
+    (function () {
+        // 给 window 添加 $ 和 jQuery函数
+        window.jQuery = window.$ = jQuery;
+    })()
+    // $ 是一个函数
+    alert(Object.prototype.toString.call($)); //[object Function]
+</script>
