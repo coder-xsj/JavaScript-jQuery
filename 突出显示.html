@@ -54,11 +54,19 @@
     <script>
            $(function () {
                // console.log($('.d-block li'));
+               // 设置鼠标移入事件
                $('.d-block').find('li').mouseenter(function () {
                    //返回对象还是一个jQuery对象,所以查找其它兄弟节点并设置透明度
-                   $(this).css('opacity', 1).siblings('li').css('opacity', 0.4)
-
+                   $(this).css('opacity', 1).siblings('li').css('opacity', 0.4);
+               });
+               // 鼠标移出事件
+               $('.d-block').find('li').mouseleave(function () {
+                   $(this).siblings('li').css('opacity', 1);
+                   
                })
+               //疑问 mouseover --- mouseenter
+               //    mouseout  --- mouseleave
+               // 有哪些不同
            })
     </script>
     </body>
