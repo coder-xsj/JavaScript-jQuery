@@ -14,11 +14,6 @@
             cursor: pointer;
         }
 
-        /* 容器 <div> - 需要定位下拉内容 */
-        /*.dropdown {*/
-        /*    position: relative;*/
-        /*    display: inline-block;*/
-        /*}*/
 
         /* 下拉内容 (默认隐藏) */
         .dropdown-content {
@@ -37,6 +32,9 @@
             display: block;
         }
 
+        .float-l{
+            float: left;
+        }
         /* 鼠标移上去后修改下拉菜单链接颜色 */
         .dropdown-content a:hover {background-color: #f1f1f1}
 
@@ -48,35 +46,41 @@
 </head>
 <body>
     <div class="dropdown">
+        <div class="float-l">
         <button class="dropbtn">下拉菜单</button>
         <div class="dropdown-content">
             <a href="#">jQuery介绍</a>
             <a href="#">JQuery入口函数</a>
             <a href="#">jQuery-text函数</a>
         </div>
+        </div>
+        <div class="float-l">
         <button class="dropbtn">下拉菜单</button>
         <div class="dropdown-content">
             <a href="#">xxx</a>
             <a href="#">sss</a>
             <a href="#">jjj</a>
         </div>
+        </div>
+        <div class="float-l">
         <button class="dropbtn">下拉菜单</button>
         <div class="dropdown-content">
-            <a href="#">jQuery介绍</a>
-            <a href="#">JQuery入口函数</a>
-            <a href="#">jQuery-text函数</a>
+            <a href="#">jQuery介绍-copy</a>
+            <a href="#">JQuery入口函数-copy</a>
+            <a href="#">jQuery-text函数-copy</a>
+        </div>
         </div>
     </div>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script>
         $(function () {
             //给按钮设置鼠标移入事件
-            $('.dropdown>button').mouseover(function () {
-                $(this).siblings('div').show(); //本质上就是设置display: block
+            $('.dropdown>div').mouseover(function () {
+                $(this).children('div').show(); //本质上就是设置display: block
             });
             //给按钮设置鼠标移出事件
-            $('.dropdown>button').mouseout(function () {
-                $(this).siblings('div').hide(); //本质上就是设置display: block
+            $('.dropdown>div').mouseout(function () {
+                $(this).children('div').hide(); //本质上就是设置display: block
             });
         })
     </script>
