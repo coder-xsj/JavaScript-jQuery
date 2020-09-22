@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class操作添加和移除</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+        }
+        .bgc{
+            background-color: pink;
+        }
+        .bgc-beige{
+            background-color: beige;
+        }
+        .width-300{
+            width: 300px;
+            height: 300px;
+        }
+        .color-blue{
+            color: blue;
+        }
+        .font-30{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="添加类" id="addClass">
+<input type="button" value="移除类" id="removeClass">
+<input type="button" value="判断类" id="hasClass">
+<input type="button" value="切换类" id="toggleClass">
+<div id="div1" class="bgc">hello world</div>
+<!--文档示例-->
+<ul>
+    <li>Hello</li>
+    <li>Hello</li>
+    <li>Hello</li>
+</ul>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $('ul li:last').addClass(function() {
+        return 'item-' + $(this).index();
+    });
+    $('#addClass').click(function () {
+        // 1.添加类 addClass('类名');
+        // 添加一个类
+        $('#div1').addClass('bgc-beige');
+        // 添加多个类
+        $('#div1').addClass('width-300 color-blue font-30')
+    });
+
+    // 2.移除类 removeClass('类名')
+    // 移除一个类
+    $('#removeClass').click(function () {
+        $('#div1').removeClass('width-300 color-blue');
+        // 删除匹配元素的所有类
+        $('#div1').removeClass();
+    });
+
+    // 3.判断类是否存在
+    $('#hasClass').click(function () {
+        $('#div1').hasClass('font-30'); // 判断是否存在某个类，有的话就是true，无的话是false
+    });
+
+    // 4.切换类---如果存在（不存在）就删除（添加）一个类。
+    $('#toggleClass').click(function () {
+        $('#div1').toggleClass('font-30');
+    })
+</script>
+</body>
+</html>
