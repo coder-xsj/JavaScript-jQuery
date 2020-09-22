@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .parentWrap>.menuGroup>div{
+            display: none;
+            height: 100px;
+
+        }
+        .parentWrap>.menuGroup>span{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul class="parentWrap list-group">
+    <li class="menuGroup list-group-item active">
+        <span class="groupTitle">标题1</span>
+        <div>我是弹出来的div 1</div>
+    </li>
+    <li class="menuGroup list-group-item">
+        <span class="groupTitle">标题2</span>
+        <div>我是弹出来的div 2</div>
+    </li>
+    <li class="menuGroup list-group-item">
+        <span class="groupTitle">标题3</span>
+        <div>我是弹出来的div 3</div>
+    </li>
+    <li class="menuGroup list-group-item">
+        <span class="groupTitle">标题4</span>
+        <div>我是弹出来的div 4</div>
+    </li>
+    <li class="menuGroup list-group-item">
+        <span class="groupTitle">标题5</span>
+        <div>我是弹出来的div 5</div>
+    </li>
+</ul>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        //点击事件
+        $('.parentWrap>.menuGroup').find('span').click(function () {
+            // console.log($(this));
+            $(this).next('div').show(); // 将div显示
+            $(this).parent().siblings('li').find('div').hide(); // 隐藏其他兄弟节点的div
+            // $('.parentWrap .menuGroup').addClass('active')// 这样不行 是设置了全部
+            // 给当前li添加active属性
+            $(this).parent().addClass('active');
+            // 移除其它兄弟节点li的active属性
+            $(this).parent().siblings('li').removeClass('active');
+        })
+
+    })
+</script>
+</body>
+</html>
