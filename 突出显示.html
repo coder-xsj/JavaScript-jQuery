@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>突出显示</title>
+        <style>
+            *{
+                /* 消除图像距离body的距离 */
+                margin: 0;   
+                padding: 0;
+                list-style: none;    /* 消除ul前面的项目符号 */
+            }
+            body{
+                /* width: 100%;
+                height: 100%; */
+                background: rgb(106, 42, 209);
+            }
+            div{
+                width: 800px;
+                height: 186px;
+                margin: 50px auto;
+                border: 3px solid #000;
+            }
+            img{
+                vertical-align: top;   /* 解决图片之间的小缝隙 */
+                width: 100%;
+                height: 100%;
+            }
+            li{
+                float:left;
+                width: 200px;
+                height: 186px;
+                box-sizing: border-box;   /* 为解决图像边框撑开盒子的问题 */
+                border: 1px solid #000;  /* 给图像设置边框 实线 黑色 */
+                transition: all .5s;   /* 过渡效果 */
+            }
+            li:hover{
+                /*opacity: 0.5;   !* 划过图像透明度 *!*/
+                transform: translateY(-5px);  /* 往上浮现 */
+                box-shadow: 0 3px 3px rgba(0,0,0,.45);  /* 给盒子加阴影 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d-block">
+            <ul>
+                <li><a href="javascript:;"><img src="./static/images/01.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./static/images/02.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./static/images/03.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="./static/images/04.jpg" alt=""></a></li>
+            </ul>
+        </div>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script>
+           $(function () {
+               // console.log($('.d-block li'));
+               $('.d-block').find('li').mouseenter(function () {
+                   //返回对象还是一个jQuery对象,所以查找其它兄弟节点并设置透明度
+                   $(this).css('opacity', 1).siblings('li').css('opacity', 0.4)
+
+               })
+           })
+    </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+body{
+    background-color: brown;
+}
+
+#div1{
+    background-color:white;
+    width: 350px;
+    height: 330px;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+
+}
+#div1 .form1{
+    margin: 50px;
+    margin-top: 0;
+}
