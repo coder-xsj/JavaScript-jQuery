@@ -48,10 +48,13 @@
             $(this).parent().siblings('li').find('div').hide(); // 隐藏其他兄弟节点的div
             // $('.parentWrap .menuGroup').addClass('active')// 这样不行 是设置了全部
             // 给当前li添加active属性
-            $(this).parent().addClass('active');
+            // $(this).parent().addClass('active');
             // 移除其它兄弟节点li的active属性
+            // $(this).parent().siblings('li').removeClass('active');
+            // 可以用tollgeClass()方法来
+            $(this).parent().toggleClass('active');
             $(this).parent().siblings('li').removeClass('active');
-        })
+        });
 
     })
 </script>
