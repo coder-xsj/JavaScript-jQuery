@@ -47,40 +47,41 @@
 <body>
     <div class="dropdown">
         <div class="float-l">
-        <button class="dropbtn">下拉菜单</button>
-        <div class="dropdown-content">
-            <a href="#">jQuery介绍</a>
-            <a href="#">JQuery入口函数</a>
-            <a href="#">jQuery-text函数</a>
-        </div>
-        </div>
-        <div class="float-l">
-        <button class="dropbtn">下拉菜单</button>
-        <div class="dropdown-content">
-            <a href="#">xxx</a>
-            <a href="#">sss</a>
-            <a href="#">jjj</a>
-        </div>
+            <button class="dropbtn">下拉菜单</button>
+            <div class="dropdown-content">
+                <a href="#">jQuery介绍</a>
+                <a href="#">JQuery入口函数</a>
+                <a href="#">jQuery-text函数</a>
+            </div>
         </div>
         <div class="float-l">
-        <button class="dropbtn">下拉菜单</button>
-        <div class="dropdown-content">
-            <a href="#">jQuery介绍-copy</a>
-            <a href="#">JQuery入口函数-copy</a>
-            <a href="#">jQuery-text函数-copy</a>
+            <button class="dropbtn">下拉菜单</button>
+            <div class="dropdown-content">
+                <a href="#">xxx</a>
+                <a href="#">sss</a>
+                <a href="#">jjj</a>
+            </div>
         </div>
+        <div class="float-l">
+            <button class="dropbtn">下拉菜单</button>
+            <div class="dropdown-content">
+                <a href="#">jQuery介绍-copy</a>
+                <a href="#">JQuery入口函数-copy</a>
+                <a href="#">jQuery-text函数-copy</a>
+            </div>
         </div>
     </div>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script>
         $(function () {
             //给按钮设置鼠标移入事件
-            $('.dropdown>div').mouseover(function () {
-                $(this).children('div').show(); //本质上就是设置display: block
+            $('.dropdown>.float-l>.dropbtn').mouseover(function () {
+                // $(this).children('div').show(); //本质上就是设置display: block
+                $(this).siblings('div').slideDown("normal"); //本质上就是设置display: block
             });
             //给按钮设置鼠标移出事件
-            $('.dropdown>div').mouseout(function () {
-                $(this).children('div').hide(); //本质上就是设置display: block
+            $('.dropdown>.float-l>.dropbtn').mouseout(function () {
+                $(this).siblings('div').slideUp("fast"); //本质上就是设置display: block
             });
         })
     </script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery动画</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="向下滑入" id="slideDown">
+<input type="button" value="向下滑出" id="slideUp">
+<input type="button" value="滑入滑出" id="slideToggle">
+<input type="button" value="无缝滑入滑出" id="slideDownAndUp">
+<br><br>
+<div id="div1">你个大傻逼</div>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    //给div1向下滑入动画显示
+   $('#slideDown').click(function () {
+       // $('#div1').slideDown();  //默认有动画
+       $('#div1').slideDown("slow");
+       // $('#div1').slideDown(1000);
+       // $('#div1').slideDown("slow", function () {
+       //     alert("Animation Done.");
+       // });
+   })
+    //给div1向上滑出动画显示
+    $('#slideUp').click(function () {
+        $('#div1').slideUp("slow", function () {
+            alert("Animation Done.");
+        });
+    })
+    //给div1滑入滑出动画显示
+    $('#slideToggle').click(function () {
+        $('#div1').slideToggle("slow", function () {
+            alert("Animation Done.");
+        })
+    });
+   // 无缝滑入滑出
+   $('#slideDownAndUp').click(function () {
+       $('#div1').slideDown("slow");
+       $('#div1').slideUp("slow");
+   })
+</script>
+</body>
+</html>

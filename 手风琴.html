@@ -44,7 +44,9 @@
         //点击事件
         $('.parentWrap>.menuGroup').find('span').click(function () {
             // console.log($(this));
-            $(this).next('div').show(); // 将div显示
+            // $(this).next('div').show(); // 将div显示
+            // 动画显示
+            $(this).next('div').slideToggle("slow"); // 将div显示
             $(this).parent().siblings('li').find('div').hide(); // 隐藏其他兄弟节点的div
             // $('.parentWrap .menuGroup').addClass('active')// 这样不行 是设置了全部
             // 给当前li添加active属性

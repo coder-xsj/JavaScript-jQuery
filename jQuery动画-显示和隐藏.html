@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery动画</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="显示" id="show">
+<input type="button" value="隐藏" id="hide">
+<input type="button" value="切换" id="toggle">
+<br><br>
+<div id="div1"></div>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    //给div1动画显示
+    $('#show').click(function () {
+        // show()方法不写参数就是马上显示
+        // 毫秒，字符串 fast 200ms normal 400ms slow 600ms
+        // $('#div1').show();
+        // $('#div1').show(600);
+        $('#div1').show("slow");
+        // 回调函数--动画执行完之后的反馈
+        $('#div1').show('normal', function () {
+             alert('显示动画执行完毕了---Show Animation Done!');
+        })
+    });
+    $('#hide').click(function () {
+        // hide()方法不写参数就是马上隐藏
+        // 毫秒，字符串 fast 200ms normal 400ms slow 600ms
+        // $('#div1').hide();
+        // $('#div1').hide(600);
+        $('#div1').hide(600, function () {
+             alert('隐藏动画执行完毕了---Hide Animation Done!');
+        });
+    });
+    $('#toggle').click(function () {
+        $('#div1').toggle(600);
+    })
+</script>
+</body>
+</html>
