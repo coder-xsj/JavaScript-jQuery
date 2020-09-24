@@ -77,7 +77,7 @@
             //给按钮设置鼠标移入事件
             $('.dropdown>.float-l>.dropbtn').mouseover(function () {
                 // $(this).children('div').show(); //本质上就是设置display: block
-                $(this).siblings('div').slideDown("normal"); //本质上就是设置display: block
+                $(this).siblings('div').slideDown("normal").stop(); //本质上就是设置display: block
             });
             //给按钮设置鼠标移出事件
             $('.dropdown>.float-l>.dropbtn').mouseout(function () {
