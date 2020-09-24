@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解决jQuery冲突问题</title>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="static/js/jQuery冲突问题示例.js"></script>
+    <script>
+        // $符号冲突
+        // 解决方案，jQuery放权$使用权,后面使用jQuery来代替$
+        jQuery.noConflict();
+        // $(function () {
+        //     alert("hello world");
+        // });
+        jQuery(function () {
+            alert("hello world1");
+        });
+
+        //自定义访问符号
+        var hello = jQuery.noConflict();
+        hello(function () {
+            alert("hello world2");
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
