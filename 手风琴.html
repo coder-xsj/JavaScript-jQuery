@@ -13,9 +13,14 @@
         .parentWrap>.menuGroup>span{
             cursor: pointer;
         }
+        #toggleAll{
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
+<button type="button" class="btn btn-success" id="toggleAll">全部展开(关闭)</button>
+
 <ul class="parentWrap list-group">
     <li class="menuGroup list-group-item active">
         <span class="groupTitle">标题1</span>
@@ -47,7 +52,7 @@
             // $(this).next('div').show(); // 将div显示
             // 动画显示
             $(this).next('div').slideToggle("slow"); // 将div显示
-            $(this).parent().siblings('li').find('div').hide(); // 隐藏其他兄弟节点的div
+            $(this).parent().siblings('li').find('div').slideUp("slow"); // 隐藏其他兄弟节点的div
             // $('.parentWrap .menuGroup').addClass('active')// 这样不行 是设置了全部
             // 给当前li添加active属性
             // $(this).parent().addClass('active');
@@ -58,6 +63,11 @@
             $(this).parent().siblings('li').removeClass('active');
         });
 
+        // 全部展开关闭
+        $('#toggleAll').click(function () {
+            $('.parentWrap>li>div').slideToggle('slow');
+
+        })
     })
 </script>
 </body>

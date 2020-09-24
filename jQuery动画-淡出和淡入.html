@@ -8,35 +8,76 @@
             width: 200px;
             height: 200px;
             background-color: red;
-            display: none;
+            position: absolute;
+            left: 0;
+        }
+        #div1{
+            top: 50px;
+        }
+
+        #div2{
+            top: 300px;
         }
     </style>
 </head>
 <body>
-<input type="button" value="淡入" id="fadeIn">
-<input type="button" value="淡出" id="fadeOut">
-<input type="button" value="切换" id="fadeToggle">
-<input type="button" value="淡入(出)到哪里" id="fadeTo">
+<input type="button" value="自定义动画" id="animate">
+
 <br><br>
 <div id="div1"></div>
+<div id="div2"></div>
 <script src="node_modules/jquery/dist/jquery.js"></script>
 <script>
-   $(function () {
-       $('#fadeIn').click(function () {
-           // $('#div1').fadeIn(1000);
-           $('#div1').fadeIn("slow");
-       });
-       $('#fadeOut').click(function () {
-           $('#div1').fadeOut(600);
-       });
-       $('#fadeToggle').click(function () {
-           $('#div1').fadeToggle(1000);
-       });
-       $('#fadeTo').click(function () {
-           $('#div1').fadeTo("slow", 0.6);
+    //自定义动画 animate（）；
+    //参数1：必选的对象代表的是需要做动画的属惟
+    //参数2：可选的代表执行动画的时长.
+    //参数3：可选的easing代表的是缓动还是匀速1inear（匀速）swing（缓动）默认不写是缓动
+    //参数4：动画执行完毕后的回调函数.
+    $('#animate').click(function () {
+        // 让div1 1秒内缓慢移动
+        // $('#div1').animate({
+        //     left: '1000px',
+        // }, 1000);
 
-       });
-   })
+        // // 让div2 1秒内匀速移动
+        // $('#div2').animate({
+        //     left: '1000px',
+        // }, 1000, 'linear');
+        //
+        // $('#div1').animate({
+        //     left: '800px',
+        //     width: '400px',
+        //     height: '400px',
+        //     opacity: 0.5,
+        // }, 1000, function () {
+        //     alert('Action Done!');  // 既然是回调函数我还可以执行动画
+        // });
+
+        $('#div1').animate({
+            left: $(window).width() - $('#div1').width() * 2, // 抵达屏幕左侧
+            width: '400px',
+            height: '400px',
+            opacity: 0.5,
+
+        }, 1000, function () {
+             // 既然是回调函数我还可以执行动画
+            // 开始套娃
+            $('#div1').animate({
+               left: '400px',
+               width: '200px',
+               height: '200px',
+               opacity: 1,
+            }, 1000, function () {
+                $('#div1').animate({
+                    left: 0,
+                    top: 0,
+                    width: $(window).width(), // 获取浏览器当前窗口可视区域宽度
+                    height: $(window).height(), // 获取浏览器当前窗口可视区域高度
+                    opacity: 0,
+                }, 1000);
+            });
+        });
+    });
 </script>
 </body>
 </html>
