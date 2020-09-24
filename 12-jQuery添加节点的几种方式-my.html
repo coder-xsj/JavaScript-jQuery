@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>12-jQuery添加节点的几种方式-my</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <style>
+    button{
+      margin-top: 20px;
+      margin-left: 10px;;
+      margin-bottom: 10px;
+    }
+    ul{
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<button type="button" class="btn btn-primary" id="btnAppend">append</button>
+<button type="button" class="btn btn-secondary" id="btnPrepend">prepend</button>
+<button type="button" class="btn btn-success" id="btnAfter">after</button>
+<button type="button" class="btn btn-danger" id="btnBefore">before</button>
+<button type="button" class="btn btn-warning" id="btnAppendTo">appendTo</button>
+
+
+  <ul class="list-group" id="ul1">
+    <li class="list-group-item active list-group-item-primary">我是第1个li标签</li>
+    <li class="list-group-item list-group-item-secondary">我是第2个li标签</li>
+    <li class="list-group-item list-group-item-success" id="li3">我是第3个li标签</li>
+    <li class="list-group-item list-group-item-danger">我是第4个li标签</li>
+    <li class="list-group-item list-group-item-info">我是第5个li标签</li>
+  </ul>
+<hr>
+  <ul class="list-group" id="ul2">
+    <li class="list-group-item active">我是第1个li标签</li>
+    <li class="list-group-item">我是第2个li标签</li>
+    <li class="list-group-item" id="li32">我是第3个li标签</li>
+    <li class="list-group-item">我是第4个li标签</li>
+    <li class="list-group-item">我是第5个li标签</li>
+  </ul>
+
+</body>
+</html>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+  $(function () {
+    //1.append()
+    //父元素.append(子元素); //作为最后一个子元素添加.
+    $('#btnAppend').click(function () {
+        // 追加一个新li
+        // var $li = $('<li class="list-group-item list-group-item-light">我是第6个li标签</li>');
+        // $('#ul1').append($li);
+
+        // 获取第三个li，移动到尾部
+        var $li = $('#li3');
+        $('#ul1').append($li);
+    });
+
+    //2.prepend();
+    //父元素.prepend(子元素); //作为第一个子元素添加.
+    $('#btnPrepend').click(function () {
+        // 追加一个新li到首
+        //  var $li = $('<li class="list-group-item list-group-item-light">我是第6个li标签</li>');
+        //  $('#ul1').prepend($li);
+
+         // 将ul2中第三个li移动到ul1头部
+        var $li = $('#li32');
+        $('#ul1').prepend($li);
+    });
+
+    //3.before()
+    //元素A.before(元素B); //把元素B插入到元素A的前面,作为兄弟元素添加
+    $('#btnAfter').click(function () {
+      var $div = $('<div class="progress">\n' +
+              '  <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80"></div>\n' +
+              '</div>'); // 加一个进度条
+      $('#ul1').before($div);
+    });
+    //4.after();
+    //元素A.after(元素B); //把元素B插入到元素A的后面,作为兄弟元素添加.
+    $('#btnBefore').click(function () {
+      var $div = $('<div class="progress">\n' +
+              '  <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80"></div>\n' +
+              '</div>'); // 加一个进度条
+      $('#ul2').after($div);
+    });
+
+    //5.appendTo();
+    //子元素.appendTo(父元素); //把子元素作为父元素的最后一个子元素添加.
+    $('#btnAppendTo').click(function () {
+        var $li = $('#li32');
+        $li.appendTo($('#ul1'));
+    });
+
+  });
+</script>
