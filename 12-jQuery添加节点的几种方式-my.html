@@ -21,7 +21,7 @@
 <button type="button" class="btn btn-success" id="btnAfter">after</button>
 <button type="button" class="btn btn-danger" id="btnBefore">before</button>
 <button type="button" class="btn btn-warning" id="btnAppendTo">appendTo</button>
-
+<button type="button" class="btn btn-info" id="loadAction">加载动画</button>
 
   <ul class="list-group" id="ul1">
     <li class="list-group-item active list-group-item-primary">我是第1个li标签</li>
@@ -72,7 +72,7 @@
     //元素A.before(元素B); //把元素B插入到元素A的前面,作为兄弟元素添加
     $('#btnAfter').click(function () {
       var $div = $('<div class="progress">\n' +
-              '  <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80"></div>\n' +
+              '  <div class="progress-bar bg-success load" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="80"></div>\n' +
               '</div>'); // 加一个进度条
       $('#ul1').before($div);
     });
@@ -80,7 +80,7 @@
     //元素A.after(元素B); //把元素B插入到元素A的后面,作为兄弟元素添加.
     $('#btnBefore').click(function () {
       var $div = $('<div class="progress">\n' +
-              '  <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80"></div>\n' +
+              '  <div class="progress-bar bg-danger load" role="progressbar" style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>\n' +
               '</div>'); // 加一个进度条
       $('#ul2').after($div);
     });
@@ -91,6 +91,14 @@
         var $li = $('#li32');
         $li.appendTo($('#ul1'));
     });
+    //加载动画
+    $('#loadAction').click(function () {
+        $('.load').animate({
+          width: "100%",
+          // ariaValuenow: 100,
+        }, 5000); //为什么动画效果是最后一秒才显示的
+    });
+
 
   });
 </script>
