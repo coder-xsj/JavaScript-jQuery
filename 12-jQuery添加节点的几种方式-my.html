@@ -13,6 +13,9 @@
     ul{
       margin-top: 10px;
     }
+    #ul2{
+      margin: 20px;
+    }
   </style>
 </head>
 <body>
@@ -22,6 +25,8 @@
 <button type="button" class="btn btn-danger" id="btnBefore">before</button>
 <button type="button" class="btn btn-warning" id="btnAppendTo">appendTo</button>
 <button type="button" class="btn btn-info" id="loadAction">加载动画</button>
+<button type="button" class="btn btn-info" id="clone">克隆表格1</button>
+
 
   <ul class="list-group" id="ul1">
     <li class="list-group-item active list-group-item-primary">我是第1个li标签</li>
@@ -38,6 +43,17 @@
     <li class="list-group-item">我是第4个li标签</li>
     <li class="list-group-item">我是第5个li标签</li>
   </ul>
+
+<button type="button" class="btn btn-success" id="submit">提交表单</button>
+<button type="button" class="btn btn-success" id="delInput">清空输入框</button>
+<!-- 输入框-->
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">UserName and PassWord</span>
+  </div>
+  <input type="text"  aria-label="User name" class="form-control" id="username">
+  <input type="password" aria-label="PassWord" class="form-control" id="password">
+</div>
 
 </body>
 </html>
@@ -99,6 +115,37 @@
         }, 5000); //为什么动画效果是最后一秒才显示的
     });
 
+    //克隆表格1到页面中
+    $('#clone').click(function () {
+      // clone(bool)方法来克隆节点，会克隆后代节点的
+      // true 克隆绑定事件
+      // false default 不克隆绑定事件
+      //$('#ul1').clone(true).appendTo('body'); 因要修改id名，故用下面方法
+      var $cloneUl1 = $('#ul1').clone(true);
+      $cloneUl1.attr('id', 'ul3').appendTo('body'); //修改id并且添加到body中
 
+
+    });
+    $('#ul1').click(function () {
+      alert("测试clone方法的事件绑定");
+    });
+
+
+
+    // val()方法
+    $('#submit').click(function () {
+       var userName = $('#username').val(),
+           passWord = $('#password').val();
+       alert("userName:" + userName);
+       alert("passWord:" + passWord);
+    });
+    // var(string)方法
+    $('#delInput').click(function () {
+      // $('#username').val("");
+      // $('#password').val("");
+      // 可以用并集选择器
+      $('#username, #password').val("");
+      $('#username').focus();  // 让表单1获取焦点
+    });
   });
 </script>

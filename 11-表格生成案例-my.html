@@ -51,13 +51,14 @@
 </head>
 
 <body>
-<button type="button" class="btn btn-outline-info" id="jBtnGetData">获取数据</button>
+<button type="button" class="btn btn-outline-info" id="jBtnGetData">获取数据</button><button type="button" class="btn btn-outline-info" id="jBtnDelData">清空数据</button>
 <table>
     <thead>
     <tr>
         <th>标题</th>
         <th>地址</th>
         <th>说明</th>
+        <th>操作</th>
     </tr>
     </thead>
     <tbody id="jTbData">
@@ -105,18 +106,25 @@
     //     // console.log(list.join(""));
     //     $('#jTbData').html(list.join(""));
     // });
-
+        // 获取数据
       $('#jBtnGetData').click(function () {
           for (let i = 0; i < data.length; i++) {
-              $tr = "<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['url'] + "</td><td>" + data[i]['type'] + "</td></tr>";
-              $('#jTbData').append($tr);
-
-
+              $tr = $("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['url'] + "</td><td>" + data[i]['type'] + "</td><td>" +  '<a href="javascrip:;" class="delRow">Delete</a>' + "</td></tr>");
+              // 给a标签添加一个注册事件
           }
+
+          $('#jTbData').append($tr);
       });
 
+        // 清空数据
+      $('#jBtnDelData').click(function () {
+          $('#jTbData').empty();
+      });
 
-
+      // Delete事件 为什么没有生效呢，因为注册事件过了
+      $('#jTbData>tr>td>a').click(function () {
+         $(this).parent().parent().remove();
+      });
 
   });
 </script>
