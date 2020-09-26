@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>01-jQuery操作属性(attr adn removeAttr)-my</title>
+  <style>
+    img{
+      width: 500px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="获取属性" id="btn1"/>
+  <input type="button" value="设置属性" id="btn2"/>
+  <input type="button" value="移除属性" id="btn3"/> <br/><br/>
+  <img src="static/images/kangna2.png" alt="kangna jiang" title="康娜" aaa='aaa'/>
+</body>
+</html>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+  $(function () {
+    //jQuery中操作属性:attr() removeAttr();
+    //1.设置属性
+    $('#btn2').click(function () {
+      //设置单属性.
+      // $('img').attr('width', '400px').attr('height', '300px');
+      //设置多属性.
+      $('img').attr({
+        width: "700px",
+        height: '400px',
+        src: "static/images/康娜3.png",
+      })
+    });
+
+    //2.获取属性.
+    $('#btn1').click(function () {
+        alert($('img').attr('width'));
+    });
+
+    //3.移除属性.
+    $('#btn3').click(function () {
+      // 移除多属性
+      $('img').removeAttr('width height aaa src');
+      // $('img').removeAttr(); // 不可移除全部属性
+    });
+
+  });
+</script>
