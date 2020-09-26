@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册on和解绑off事件</title>
+    <style>
+        .divOne{
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="注册" id="btn-on">
+<input type="button" value="解绑" id="btn-off">
+
+<div class="divOne"></div>
+
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $('#btn-on').on('click',function () {
+        $('.divOne').on({
+            click: function () {
+                console.log("单击");
+            },
+            mouseenter: function () {
+                console.log("移入");
+            },
+        });
+    });
+
+    $('#btn-off').on('click',function (){
+        //解绑
+        $('.divOne').off('click');
+    })
+</script>
+</body>
+</html>

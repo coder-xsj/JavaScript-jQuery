@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style> 
+    div {
+      width: 200px;
+      height: 200px;
+      margin-top: 10px;
+    }
+    .one  {
+      border: 1px solid red;
+    }
+    .two {
+      border: 1px solid green;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="按钮" id="btn"/> <br/><br/>
+  <div class="one" id="one"></div>
+  <span style="border:1px solid green">我是一个span标签</span>
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+
+<script>
+  $(function () {
+    //用原生的js给div注册单击事件.
+    //原生js注册相同的事件,后面的会把前面的给覆盖.
+    // document.getElementById('one').onclick = function () {
+    //   alert('鼠标单击事件');
+    // };
+    // document.getElementById('one').onmouseenter = function () {
+    //   alert('鼠标移入事件');
+    // };
+    //给按钮设置点击事件,创建一个div.
+    $('#btn').click(function () {
+      var $divNew = $('<div class="two"></div>');
+      $('body').append($divNew);
+    });
+
+    // jQuery 不会覆盖事件
+    // $('#one').click(function () {
+    //   console.log('鼠标单击事件')
+    // });
+    // $('#one').mouseenter(function () {
+    //   console.log('鼠标移入事件');
+    // });
+
+    //jQuery注册事件的发展历程. (了解)
+
+    //2. bind方式注册事件
+    //支持同时注册,也不支持动态注册.
+    // $('div').bind({
+    //   click: function () {
+    //     console.log("bind事件");
+    //   },
+    //   mouseenter: function () {
+    //     console.log("mouse-bind事件");
+    //   },
+    // });
+
+    //3.delegate 注册事件委托
+    //使用方法，给父标签设置委托给第一个参数
+    $('body').delegate('div', {
+      click: function () {
+        console.log("delegate事件");
+      },
+      mouseenter: function () {
+        console.log("mouse-delegate事件");
+      },
+    })
+
+  });
+</script>
+</body>
+</html>
+

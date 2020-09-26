@@ -62,7 +62,7 @@
     </tr>
     </thead>
     <tbody id="jTbData">
-
+    <tr><td>黑马程序员</td><td>http://www.itheima.com</td><td>大学生IT培训机构</td><td><a href="javascrip:;" class="delRow">Delete</a></td></tr>    <tr><td>黑马程序员</td><td>http://www.itheima.com</td><td>大学生IT培训机构</td><td><a href="javascrip:;" class="delRow">Delete</a></td></tr>    <tr><td>黑马程序员</td><td>http://www.itheima.com</td><td>大学生IT培训机构</td><td><a href="javascrip:;" class="delRow">Delete</a></td></tr>
     </tbody>
 </table>
 </body>
@@ -110,11 +110,28 @@
       $('#jBtnGetData').click(function () {
           for (let i = 0; i < data.length; i++) {
               $tr = $("<tr><td>" + data[i]['name'] + "</td><td>" + data[i]['url'] + "</td><td>" + data[i]['type'] + "</td><td>" +  '<a href="javascrip:;" class="delRow">Delete</a>' + "</td></tr>");
-              // 给a标签添加一个注册事件
+
+              $('#jTbData').append($tr);
           }
 
-          $('#jTbData').append($tr);
       });
+      // 给td标签添加一个注册委托事件给a标签
+      // 还是不可行
+      // $('#jTbData').delegate('tr>td>a', {
+      //     click: function () {
+      //         alert(123);
+      //        $(this).children().remove();
+      //     }
+      // });
+
+      // 用on事件委托
+      $('#jTbData').on('click', '.delRow', function () {
+          // this修改了
+          // 实际现在是a标签
+          $(this).parent().parent().remove();
+
+      });
+
 
         // 清空数据
       $('#jBtnDelData').click(function () {
@@ -122,9 +139,9 @@
       });
 
       // Delete事件 为什么没有生效呢，因为注册事件过了
-      $('#jTbData>tr>td>a').click(function () {
-         $(this).parent().parent().remove();
-      });
+      // $('#jTbData>tr>td>a').click(function () {
+      //    $(this).parent().parent().remove();
+      // });
 
   });
 </script>
