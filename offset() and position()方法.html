@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset() and position()方法</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .faBox{
+            width: 500px;
+            height: 500px;
+            border: 5px solid black;
+            position: relative;
+            top: 20px;
+            margin: 10px;
+        }
+        .sonBox{
+            width: 300px;
+            height: 300px;
+            border: 5px solid skyblue;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+        button{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="width() and height()" id="w-a-h">
+<!--<input type="button" value="">-->
+<input type="button" value="offset" id="btn-offset">
+<input type="button" value="position" id="btn-position">
+<div class="faBox">
+    <div class="sonBox"></div>
+</div>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        $('#w-a-h').click(function (){
+            alert("faBox.css-width:" + $('.faBox').css('width'));
+            alert("faBox.css-height:" + $('.faBox').css('height'));
+            // 拿到的是数值
+            alert("faBox.width:" + $('.faBox').width());
+            alert("faBox.height:" + $('.faBox').height());
+            //获取可视区宽度
+            alert("window.width:" +  $(window).width());
+            //获取可视区高度
+            alert("window.height:" +  $(window).height());
+
+            //获取页面被卷曲的高度
+            //获取页面被卷曲的宽度
+            alert("window.scrollTop:" +  $(window).scrollTop());
+            alert("window.scrollLeft:" +  $(window).scrollLeft());
+
+        });
+
+        $('#btn-offset').click(function () {
+            // offset() 得到一个对象，对象属性有top和left
+            // 距离body的参数
+                console.log($('.sonBox').offset());
+
+        })
+    })
+
+
+</script>
+</body>
+</html>

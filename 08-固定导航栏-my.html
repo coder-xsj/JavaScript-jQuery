@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>固定导航栏</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .top, .nav {
+      width: 1423px;
+      margin: 0 auto;
+    }
+
+    .main {
+      width: 1000px;
+      margin: 20px auto;
+    }
+
+    img {
+      display: block;
+      vertical-align: middle;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="top">
+    <img src="static/images/top.png"/>
+  </div>
+  <div class="nav">
+    <img src="static/images/nav.png"/>
+  </div>
+  <div class="main">
+    <img src="static/images/main.png"/>
+  </div>
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+  $(function () {
+    //思路:给页面设置一个滚动事件,时刻监视页面的scrollTop的值,
+    // 如果这个值大于第一部分的高度,就设置第二部分为固定定位.
+    // 如果这个值小于第一部分的高度,就设置第二部分的定位还原.
+    //计算第一部分的高度.
+    var topValue = $('.top').height();
+    // 计算nav的高度
+    var navValue = $('.nav').height();
+    $(window).scroll(function () {
+        // console.log($(this).scrollTop());
+      var thisWindowScrollTopValue = $(this).scrollTop();
+
+      if(thisWindowScrollTopValue >= topValue){
+        $('.nav').css({
+          position: 'fixed',
+          top: 0,
+          left: 0,
+        });
+        // 因为设置fixed，所以脱离文档流，地下的文章直接顶了上去很生硬
+        // 所以用margin来替代原来的位置
+        $('.main').css('marginTop', navValue);
+      }else{
+        $('.nav').css({
+          position: 'static',
+          top: 0,
+          left: 0,
+        });
+        $('.main').css('marginTop', '20px');
+      }
+
+    });
+
+
+  });
+</script>
+</body>
+</html>

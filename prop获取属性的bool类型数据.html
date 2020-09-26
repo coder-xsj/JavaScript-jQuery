@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prop获取属性的bool类型数据</title>
+</head>
+<body>
+<input type="button" value="获取" id="getCheck">
+<input type="checkbox" id="check1">
+<input type="checkbox" id="check2">
+<input type="checkbox" id="check3">
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+
+        $('#getCheck').click(function () {
+            // 原生js设置checkbox的checked的值
+            // document.getElementById('check1').checked = false;
+
+            // jQuery获取checked
+            // console.log($('#check1').attr('checked'));  //undefined
+            // $("input[type='checkbox']").prop('checked');
+            console.log($("input[type='checkbox']").prop("checked"));
+            // 禁用和选中所有页面上的复选框。
+            // $("input[type='checkbox']").prop("disabled", true);
+            // $("input[type=checkbox]").prop("checked", true);
+
+            // 通过函数来设置所有页面上的复选框被选中。
+            $("input[type=checkbox]").prop("checked", function (i, val) {
+                return !val;
+
+            })
+        });
+
+    })
+</script>
+</body>
+</html>
