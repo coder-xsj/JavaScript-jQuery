@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>触发器trigger</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        #one{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        button{
+            margin-top: 20px;
+            margin-left: 10px;;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="btn btn-primary" id="btnTrigger">trigger事件</button>
+    <button type="button" class="btn btn-secondary" id="btnPrepend">prepend</button>
+    <div id="one"></div>
+
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $('#one').on('click', function () {
+            // console.log("one-click事件");
+            $('#one').text("one-click事件");
+        });
+
+        // 先自定义绑定
+        $('#one').on('customEvents', function () {
+            // console.log("one-customEvents事件");
+            $('#one').append($("<p>one-customEvents事件</p>"));
+        });
+        // 然后trigger触发
+        $('#btnTrigger').click(function () {
+            // 触发customEvents事件
+            $('#one').trigger('customEvents');
+        });
+
+    </script>
+</body>
+</html>

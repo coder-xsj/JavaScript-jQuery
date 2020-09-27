@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件触发对象e</title>
+    <style>
+        #one{
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+        a{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="one">
+    <input type="button" value="事件触发">
+    <a href="https://www.baidu.com">百度一下</a>
+</div>
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $('#one').on('click', function (e) {
+        //2.事件对象中有常用的三个坐标.
+        // console.log("screenX"+ e.screenX +" : " + e.screenY);//触发事件那一点距离 屏幕最左上角的值
+        // console.log("clientX"+ e.clientX +" : " + e.clientY);//触发事件那一点距离 可视区左上角的值
+        // console.log("pageX"+ e.pageX +" : " + e.pageY);//触发事件那一点距离  页面左上角的值
+        // 给父亲注册单击事件
+        alert('我是one事件');
+    });
+
+    $('a').on('click', function (e) {
+        alert('我是button事件');
+        // 防止事件冒泡
+        e.stopPropagation();
+        // 阻止默认行为 a是跳转
+        e.preventDefault();
+        // 既可以防止事件冒泡也可以阻止默认行为,但是写在最后，不然后面语句执行不到了
+        // return false;
+        // alert('12312');  // 未执行到
+    });
+
+    $(document).keydown(function (e) {
+        // 按键的ASCLL码
+        console.log(e.keyCode);
+    })
+</script>
+</body>
+</html>
