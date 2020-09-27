@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>each()</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background: pink;
+            text-align: center;
+            line-height: 200px;
+            margin: 0 20px 20px 0;
+        }
+    </style>
+</head>
+<body>
+  <ul id="ulList">
+      <li>什么都看不见</li>
+      <li>什么都看不见</li>
+      <li>什么都看不见</li>
+      <li>什么都看不见</li>
+      <li>什么都看不见</li>
+      <li>什么都看不见</li>
+<!--      <li>什么都看不见</li>-->
+<!--      <li>什么都看不见</li>-->
+<!--      <li>什么都看不见</li>-->
+<!--      <li>什么都看不见</li>-->
+  </ul>
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+  $(function () {
+    //需求:找到所有的li标签,分别设置透明度,透明度是递增到1.
+    var $divs = $('#ulList').children();
+    $divs.each(function (index, element) {
+        $(element).css('opacity', (index + 5) / 10);
+    });
+    // 获取jQuery版本号
+      console.log(jQuery.fn.jquery);
+      console.log(jQuery.prototype.jquery);
+      console.log($.fn.jquery);
+      console.log($.prototype.jquery);
+  });
+</script>
+</body>
+</html>
+

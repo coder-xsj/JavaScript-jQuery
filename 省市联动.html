@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>省市联动</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        *{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div data-toggle="distpicker" id="one">
+    <select></select>
+    <select></select>
+    <select></select>
+</div>
+<button type="button" class="btn btn-success" id="btnReset">Reset</button>
+<button type="button" class="btn btn-danger" id="btnReset-deep">Reset(deep)</button>
+<button type="button" class="btn btn-warning" id="btnDestroy">Destroy</button>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script src="node_modules/distpicker/dist/distpicker.js"></script>
+
+    <script>
+        $('#one').distpicker({
+            province: '安徽省',
+            city: '马鞍山市',
+            district: '当涂县'
+        });
+        $('#btnReset').click(function () {
+            $('#one').distpicker('reset');
+            
+        });
+        $('#btnReset-deep').click(function () {
+            $('#one').distpicker('reset', true);
+
+        });
+        $('#btnDestroy').click(function () {
+            $('#one').distpicker('destroy');
+
+        });
+
+    </script>
+</body>
+</html>

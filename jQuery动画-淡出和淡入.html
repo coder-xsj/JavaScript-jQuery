@@ -27,6 +27,8 @@
 <div id="div1"></div>
 <div id="div2"></div>
 <script src="node_modules/jquery/dist/jquery.js"></script>
+<!--引入颜色插件来补充animate动画不会改变背景色属性-->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-color/2.0.0/jquery.color.js"></script>
 <script>
     //自定义动画 animate（）；
     //参数1：必选的对象代表的是需要做动画的属惟
@@ -58,7 +60,7 @@
             width: '400px',
             height: '400px',
             opacity: 0.5,
-
+            backgroundColor: 'blue',
         }, 1000, function () {
              // 既然是回调函数我还可以执行动画
             // 开始套娃
@@ -67,6 +69,8 @@
                width: '200px',
                height: '200px',
                opacity: 1,
+               backgroundColor: 'black',
+
             }, 1000, function () {
                 $('#div1').animate({
                     left: 0,
@@ -74,6 +78,8 @@
                     width: $(window).width(), // 获取浏览器当前窗口可视区域宽度
                     height: $(window).height(), // 获取浏览器当前窗口可视区域高度
                     opacity: 0,
+                    backgroundColor: 'yellow',
+
                 }, 1000);
             });
         });
