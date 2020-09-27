@@ -8,9 +8,13 @@
             width: 500px;
             height: 500px;
             border: 1px solid black;
+            text-align: center;
+            line-height: 500px;
         }
         a{
-            display: block;
+            text-align: center;
+            /*display: block;*/
+            line-height: 500px;
         }
     </style>
 </head>
@@ -31,7 +35,7 @@
     });
 
     $('a').on('click', function (e) {
-        alert('我是button事件');
+        alert('我是a事件');
         // 防止事件冒泡
         e.stopPropagation();
         // 阻止默认行为 a是跳转
